@@ -1,0 +1,15 @@
+{
+  "name": "design-specs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "esbuild src/code.ts --bundle --outfile=code.js --target=es2019",
+    "watch": "esbuild src/code.ts --bundle --outfile=code.js --target=es2019 --watch",
+    "test": "esbuild src/lint/match.check.ts --bundle --platform=node --outfile=match.check.js && node match.check.js && node -e \"require('fs').unlinkSync('match.check.js')\" && esbuild src/componentMatch.check.ts --bundle --platform=node --outfile=componentMatch.check.js && node componentMatch.check.js && node -e \"require('fs').unlinkSync('componentMatch.check.js')\""
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.109.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.0"
+  }
+}
